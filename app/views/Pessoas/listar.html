@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Pessoa' /}
+
+<a href="@{Pessoas.form}">Nova Pessoa</a>
+
+#{list items:pessoas, as:'p'}
+	<p>Nome: ${p.nome}</p>
+	<p>Email: ${p.email}</p>
+	<hr />
+#{/list}
+#{else}
+	<p>Nenhuma pessoa cadastrada.</p>
+#{/else}
