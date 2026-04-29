@@ -6,6 +6,8 @@
 #{list items:pessoas, as:'p'}
 	<p>Nome: ${p.nome}</p>
 	<p>Email: ${p.email}</p>
+	<a href="@{Pessoas.remover(p.id)}">Remover</a> |
+	<a href="@{Pessoas.detalhar(p.id)}">Detalhar</a>
 	<hr />
 #{/list}
 #{else}

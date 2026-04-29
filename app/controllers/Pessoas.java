@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Pessoa;
+import play.db.jpa.JPABase;
 import play.mvc.Controller;
 
 public class Pessoas extends Controller {
@@ -16,7 +17,8 @@ public class Pessoas extends Controller {
 		render(pessoas);
 	}
 	
-	public static void detalhar(Pessoa pessoa) {
+	public static void detalhar(Long id) {
+		Pessoa pessoa = Pessoa.findById(id);
 		render(pessoa);
 	}
 	
@@ -24,7 +26,13 @@ public class Pessoas extends Controller {
 		pessoa.nome = pessoa.nome.toUpperCase();
 		pessoa.email = pessoa.email.toLowerCase();
 		pessoa.save();
-		detalhar(pessoa);
+		listar();
+	}
+	
+	public static void remover(Long id) {
+		Pessoa qualquerNome = Pessoa.findById(id);
+		qualquerNome.delete();
+		listar();
 	}
 
 }
