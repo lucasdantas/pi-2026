@@ -1,12 +1,23 @@
 #{extends 'main.html' /}
 #{set title:'Cadastro de Pessoa' /}
 
-<h1>Cadastro de Pessoa</h1>
+
+#{if p?.id}
+	<h1>Edição de Pessoa</h1>
+#{/if}
+#{else}
+	<h1>Cadastro de Pessoa</h1>
+#{/else}
+
 <hr />
 
-<form action="/pessoas/salvar">
-	<input type="text" name="pessoa.nome" /><br />
-	<input type="text" name="pessoa.email" /><br />
+<form action="/pessoas/salvar" method="post">
+	
+	<input type="hidden" name="pessoa.id" value="${p.id}" />
+
+	<input type="text" name="pessoa.nome" value="${p.nome}" /><br />
+	<input type="text" name="pessoa.email" value="${p.email}" /><br />
+	<input type="text" name="pessoa.nascimento" value="${p.nascimento}"/><br />
 	
 	<input type="submit" value="Cadastrar">
 </form>

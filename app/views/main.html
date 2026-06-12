@@ -4,25 +4,52 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </head>
     <body>
+    	<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+		  <div class="container-fluid">
+		    <a class="navbar-brand" href="#">PI-2026</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		      <div class="navbar-nav">
+		        <a class="nav-link active" aria-current="page" href="@{Pessoas.listar}">Home</a>
+		        <a class="nav-link" href="#">Features</a>
+		        <a class="nav-link" href="#">Pricing</a>
+		        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+		      </div>
+		    </div>
+		  </div>
+		</nav>
     
-    	<div class="header">
-    		<p>Este é um cabeçalho</p>
-    	</div>
-    
-    	<div class="vermelho">
-        	#{doLayout /}
-        </div>
-        
-        <div class="footer">
-    		<p>Este é um rodapé</p>
-    	</div>
-        
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
+    	<div class="container">
+	    	#{if flash.success}
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  ${flash.success}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			#{/if}
+			#{if flash.error}
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				  ${flash.error}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			#{/if}
+	    
+	        #{doLayout /}
+	        
+	        <div class="footer">
+	    		<p>Este é um rodapé</p>
+	    	</div>
+	        
+	        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	        #{get 'moreScripts' /}
+		</div>
     </body>
 </html>
