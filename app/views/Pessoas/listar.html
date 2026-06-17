@@ -1,6 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pessoa' /}
 
+<form action="@{Pessoas.listar}">
+	<input type="text" name="termo" value="${termo}" placeholder="Informe o nome ou email" />
+	<input type="submit" value="Buscar" />
+</form>
+
 <a href="@{Pessoas.form}">Nova Pessoa</a>
 
 #{list items:pessoas, as:'p'}
