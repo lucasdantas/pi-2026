@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Pessoa;
+import models.Status;
 import play.db.jpa.JPABase;
 import play.mvc.Controller;
 
@@ -21,9 +22,9 @@ public class Pessoas extends Controller {
 	public static void listar(String termo) {
 		List<Pessoa> pessoas = null;
 		if (termo == null) {
-			pessoas = Pessoa.findAll();			
+			pessoas = Pessoa.find("status != ?1", Status.INATIVO).fetch();			
 		} else {
-			pessoas = Pessoa.find("lower(nome) like ?1 or lower(email) like ?1", "%"+termo.toLowerCase()+"%").fetch();
+			pessoas = Pessoa.find("status != ?1 and (lower(nome) like ?2 or lower(email) like ?2)", Status.INATIVO, "%"+termo.toLowerCase()+"%").fetch();
 		}
 		render(pessoas, termo);
 	}
@@ -43,7 +44,9 @@ public class Pessoas extends Controller {
 	
 	public static void remover(Long id) {
 		Pessoa qualquerNome = Pessoa.findById(id);
-		qualquerNome.delete();
+		qualquerNome.status = Status.INATIVO;
+		qualquerNome.save();
+		
 		flash.success("Pessoa removida com sucesso!");
 		listar(null);
 	}
