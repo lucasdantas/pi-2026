@@ -15,9 +15,19 @@
 	
 	<input type="hidden" name="pessoa.id" value="${p.id}" />
 
-	<input type="text" name="pessoa.nome" value="${p.nome}" /><br />
-	<input type="text" name="pessoa.email" value="${p.email}" /><br />
-	<input type="text" name="pessoa.nascimento" value="${p.nascimento}"/><br />
+	<input type="text" name="pessoa.nome" value="${p.nome}" placeholder="Nome"/><br />
+	<input type="text" name="pessoa.email" value="${p.email}" placeholder="Email"/><br />
+	<input type="text" name="pessoa.nascimento" value="${p.nascimento}" placeholder="Dt. Nascimento"/><br />
+	
+	<select name="pessoa.departamento.id">
+		#{list items:departamentos, as:'d'}
+			<option value="${d.id}" ${d.id == p.departamento?.id ? 'selected' : ''}>
+				${d.nome}
+			</option>
+		#{/list}
+	</select>
+	
+	<br />
 	
 	<input type="submit" value="Cadastrar">
 </form>

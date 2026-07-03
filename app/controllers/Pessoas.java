@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Departamento;
 import models.Pessoa;
 import models.Status;
 import play.db.jpa.JPABase;
@@ -11,12 +12,14 @@ public class Pessoas extends Controller {
 	
 	public static void form() {
 		Pessoa p = new Pessoa();
-		render(p);
+		List<Departamento> departamentos = Departamento.findAll();
+		render(p, departamentos);
 	}
 	
 	public static void editar(Long id) {
 		Pessoa p = Pessoa.findById(id);
-		renderTemplate("Pessoas/form.html", p);
+		List<Departamento> departamentos = Departamento.findAll();
+		renderTemplate("Pessoas/form.html", p, departamentos);
 	}
 	
 	public static void listar(String termo) {
