@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Pessoa' /}
+
+<h1>${projeto.nome}</h1>
+
+<hr />
+
+<form action="@{Projetos.salvarMembro}">
+	<input type="hidden" name="idProjeto" value="${projeto.id}" />
+
+	<label>Selecione o membro:</label>
+	<select name="idPessoa">
+		#{list items:pessoas, as:'p'}
+			<option value=${p.id}>${p.nome}</option>
+		#{/list}
+	</select>
+	<input type="submit" class="btn btn-primary" value="Associar" />
+</form>
+
+<hr />
+
+<h2>Membros do projeto:</h2>
+<ul>
+	#{list items:projeto.membros, as:'m'}
+		<li>${m.nome} - <a href="@{Projetos.removerMembro(projeto.id, m.id)}">Remover</a></li>
+	#{/list}
+	#{else}
+		<li>Nenhum membro</li>
+	#{/else}
+</ul>
+<a href="@{Projetos.listar}">Retornar</a>
