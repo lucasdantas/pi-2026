@@ -34,7 +34,18 @@ public class Pessoas extends Controller {
 	
 	public static void detalhar(Long id) {
 		Pessoa pessoa = Pessoa.findById(id);
-		render(pessoa);
+		
+		List<Departamento> diretoriasPessoa = Departamento.find("diretor.id = ?1", pessoa.id).fetch();
+		int quantidadeDiretorias = diretoriasPessoa.size();
+		
+		int quantidadeColaboradores = 0;
+		for (Departamento d: diretoriasPessoa) {
+			quantidadeColaboradores += d.colaboradores;
+		}
+		
+		render(pessoa, diretoriasPessoa, 
+				quantidadeDiretorias,
+				quantidadeColaboradores);
 	}
 	
 	public static void salvar(Pessoa pessoa) {

@@ -21,11 +21,13 @@ public class Inicializador extends Job {
 		Departamento d1 = new Departamento();
 		d1.nome = "TI";
 		d1.ramal = 100;
+		d1.colaboradores = 25;
 		d1.save();
 		
 		Departamento d2 = new Departamento();
 		d2.nome = "RH";
 		d2.ramal = 200;
+		d2.colaboradores = 12;
 		d2.save();
 		
 		Pessoa p1 = new Pessoa();

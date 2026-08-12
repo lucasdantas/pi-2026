@@ -14,4 +14,6 @@ public class Departamento extends Model {
 	@ManyToOne
 	public Pessoa diretor;
 	
+	public int colaboradores;
+	
 }
