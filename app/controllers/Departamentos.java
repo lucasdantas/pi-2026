@@ -12,9 +12,14 @@ public class Departamentos extends Controller {
 		render(departamentos);
 	}
 	
+	public static void form() {
+		Departamento d = new Departamento();
+		render(d);
+	}
+	
 	public static void editar(Long id) {
 		Departamento d = Departamento.findById(id);
-		render(d);
+		renderTemplate("Departamentos/form.html", d);
 	}
 	
 	public static void salvar(Departamento departamento) {

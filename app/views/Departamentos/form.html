@@ -1,7 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Edição de Departamento' /}
 
-<h1>Edição de Departamentos</h1>
+#{if d.id}
+	<h1>Edição de Departamentos</h1>
+#{/if}
+#{else}
+	<h1>Cadastro de Departamentos</h1>
+#{/else}
 
 <form action="@{Departamentos.salvar}">
 
@@ -15,6 +20,6 @@
 	<input type="text" name="departamento.ramal" value="${d.ramal}" />
 	<br />
 	
-	<input type="submit" value="Atualizar" />
+	<input type="submit" />
 
 </form>
