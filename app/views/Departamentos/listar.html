@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Departamento' /}
+
+<h1>Listagem de Departamentos</h1>
+
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Ramal</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{list items:departamentos, as:'d'}
+			<tr>
+				<td>${d.nome}</td>
+				<td>${d.ramal}</td>
+				<td><a href="@{Departamentos.editar(d.id)}">Editar</a></td>
+			</tr>
+		#{/list}
+	</tbody>
+</table>

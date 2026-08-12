@@ -23,16 +23,21 @@ public class Inicializador extends Job {
 		d1.ramal = 100;
 		d1.save();
 		
+		Departamento d2 = new Departamento();
+		d2.nome = "RH";
+		d2.ramal = 200;
+		d2.save();
+		
 		Pessoa p1 = new Pessoa();
 		p1.nome = "Joao da Silva";
-		p1.departamento = d1;
+		p1.departamento = d2;
 		p1.nascimento = new Date();
 		p1.email = "joaosilva@gmail.com";
 		p1.save();
 		
 		Pessoa p2 = new Pessoa();
 		p2.nome = "Maria Joaquina";
-		p2.departamento = d1;
+		p2.departamento = d2;
 		p2.nascimento = new Date();
 		p2.email = "mj@gmail.com";
 		p2.save();

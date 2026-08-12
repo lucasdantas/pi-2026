@@ -1,0 +1,20 @@
+#{extends 'main.html' /}
+#{set title:'Edição de Departamento' /}
+
+<h1>Edição de Departamentos</h1>
+
+<form action="@{Departamentos.salvar}">
+
+	<input type="hidden" name="departamento.id" value="${d.id}" />
+
+	<label>Nome:</label>
+	<input type="text" name="departamento.nome" value="${d.nome}" />
+	<br />
+	
+	<label>Ramal:</label>
+	<input type="text" name="departamento.ramal" value="${d.ramal}" />
+	<br />
+	
+	<input type="submit" value="Atualizar" />
+
+</form>
