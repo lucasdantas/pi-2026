@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Departamento;
+import models.Pessoa;
 import play.mvc.Controller;
 
 public class Departamentos extends Controller {
@@ -14,12 +15,14 @@ public class Departamentos extends Controller {
 	
 	public static void form() {
 		Departamento d = new Departamento();
-		render(d);
+		List<Pessoa> pessoas = Pessoa.findAll();
+		render(d, pessoas);
 	}
 	
 	public static void editar(Long id) {
 		Departamento d = Departamento.findById(id);
-		renderTemplate("Departamentos/form.html", d);
+		List<Pessoa> pessoas = Pessoa.findAll();
+		renderTemplate("Departamentos/form.html", d, pessoas);
 	}
 	
 	public static void salvar(Departamento departamento) {

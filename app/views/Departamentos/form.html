@@ -20,6 +20,16 @@
 	<input type="text" name="departamento.ramal" value="${d.ramal}" />
 	<br />
 	
+	<label>Diretor:</label>
+	<select name="departamento.diretor.id">
+		#{list items:pessoas, as:'p'}
+			<option value="${p.id}" ${p.id == d.diretor?.id ? 'selected' : ''}>
+				${p.nome} (${p.email})
+			</option>
+		#{/list}
+	</select>
+	<br />
+	
 	<input type="submit" />
 
 </form>
