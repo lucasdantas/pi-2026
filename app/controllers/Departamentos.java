@@ -5,7 +5,9 @@ import java.util.List;
 import models.Departamento;
 import models.Pessoa;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Seguranca.class)
 public class Departamentos extends Controller {
 	
 	public static void listar() {

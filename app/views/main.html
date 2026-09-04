@@ -25,6 +25,9 @@
 		        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 		      </div>
 		    </div>
+		    #{if session['usuarioLogado']}
+		    	<a href="@{Logins.sair}" class="btn btn-secondary">${session['usuarioLogado']} (Sair)</a>
+		    #{/if}
 		  </div>
 		</nav>
     

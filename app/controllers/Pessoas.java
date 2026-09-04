@@ -7,7 +7,9 @@ import models.Pessoa;
 import models.Status;
 import play.db.jpa.JPABase;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Seguranca.class)
 public class Pessoas extends Controller {
 	
 	public static void form() {
