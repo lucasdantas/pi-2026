@@ -7,6 +7,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.Email;
+import play.data.validation.InPast;
+import play.data.validation.MinSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
@@ -15,8 +19,15 @@ public class Pessoa extends Model {
 	public String login;
 	public String senha;
 	
+	@Required
+	@MinSize(5)
 	public String nome;
+	
+	@Email
+	@Required
 	public String email;
+	
+	@InPast
 	public Date nascimento;
 	
 	@ManyToOne

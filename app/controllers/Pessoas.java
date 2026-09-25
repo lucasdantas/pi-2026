@@ -5,6 +5,8 @@ import java.util.List;
 import models.Departamento;
 import models.Pessoa;
 import models.Status;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
 import play.db.jpa.JPABase;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -52,11 +54,18 @@ public class Pessoas extends Controller {
 				quantidadeColaboradores);
 	}
 	
-	public static void salvar(Pessoa pessoa) {
+	public static void salvar(@Valid Pessoa pessoa) {
+		if (validation.hasErrors()) {
+			Pessoa p = pessoa;
+			List<Departamento> departamentos = Departamento.findAll();
+			renderTemplate("Pessoas/form.html", p, departamentos);
+		}
+		
 		pessoa.nome = pessoa.nome.toUpperCase();
 		pessoa.email = pessoa.email.toLowerCase();
 		pessoa.save();
 		flash.success("Pessoa cadastrada com sucesso!");
+
 		listar(null);
 	}
 	

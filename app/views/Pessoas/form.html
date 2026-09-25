@@ -1,7 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Cadastro de Pessoa' /}
 
-
 #{if p?.id}
 	<h1>Edição de Pessoa</h1>
 #{/if}
@@ -11,13 +10,22 @@
 
 <hr />
 
+#{ifErrors}
+	<h4>Revise as informações do formulário</h4>
+#{/ifErrors}
+
 <form action="/pessoas/salvar" method="post">
 	
 	<input type="hidden" name="pessoa.id" value="${p.id}" />
 
-	<input type="text" name="pessoa.nome" value="${p.nome}" placeholder="Nome"/><br />
+	<input type="text" name="pessoa.nome" value="${pessoa.nome}" placeholder="Nome"/><br />
+	<span class="error">#{error 'pessoa.nome' /}</span><br />
+	
 	<input type="text" name="pessoa.email" value="${p.email}" placeholder="Email"/><br />
+	<span class="error">#{error 'pessoa.email' /}</span><br />
+	
 	<input type="text" name="pessoa.nascimento" value="${p.nascimento}" placeholder="Dt. Nascimento"/><br />
+	<span class="error">#{error 'pessoa.nascimento' /}</span><br />
 	
 	<select name="pessoa.departamento.id">
 		#{list items:departamentos, as:'d'}
