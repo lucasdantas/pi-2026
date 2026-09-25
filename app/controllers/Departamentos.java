@@ -6,6 +6,7 @@ import models.Departamento;
 import models.Pessoa;
 import play.mvc.Controller;
 import play.mvc.With;
+import security.Seguranca;
 
 @With(Seguranca.class)
 public class Departamentos extends Controller {

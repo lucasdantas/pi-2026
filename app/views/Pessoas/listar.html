@@ -12,7 +12,9 @@
 	<p>Nome: ${p.nome}</p>
 	<p>Email: ${p.email}</p>
 	<a href="@{Pessoas.editar(p.id)}" class="btn btn-secondary">Editar</a> |
-	<a href="@{Pessoas.remover(p.id)}" class="btn btn-danger">Remover</a> |
+	#{if session['perfilUsuario'] == 'ADMIN'}
+		<a href="@{Pessoas.remover(p.id)}" class="btn btn-danger">Remover</a> |
+	#{/if}
 	<a href="@{Pessoas.detalhar(p.id)}" class="btn btn-primary">Detalhar</a>
 	<hr />
 #{/list}

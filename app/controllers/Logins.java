@@ -10,12 +10,14 @@ public class Logins extends Controller {
 	}
 	
 	public static void logar(String login, String senha) {
-		if (!Pessoa.existeUsuario(login, senha)) {
+		Pessoa pessoaBanco = Pessoa.obterUsuario(login, senha);
+		if (pessoaBanco == null) {
 			flash.error("Usuário ou senha inválido. Tente novamente!");
 			form();
 		}
 		
 		session.put("usuarioLogado", login);
+		session.put("perfilUsuario", pessoaBanco.perfil.name());
 		flash.success("Login realizado com sucesso");
 		Projetos.listar();
 	}

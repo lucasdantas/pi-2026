@@ -23,19 +23,18 @@ public class Pessoa extends Model {
 	public Departamento departamento;
 	
 	@Enumerated(EnumType.STRING)
+	public Perfil perfil;
+	
+	@Enumerated(EnumType.STRING)
 	public Status status;
 	
 	public Pessoa() {
 		this.status = Status.ATIVO;
 	}
 	
-	public static boolean existeUsuario(String login, String senha) {
+	public static Pessoa obterUsuario(String login, String senha) {
 		Pessoa pessoa = Pessoa.find("login = ?1 and senha = ?2", login, senha).first();
-		if (pessoa == null) {
-			return false;
-		} else {
-			return true;
-		}
+		return pessoa;
 	}
 	
 }

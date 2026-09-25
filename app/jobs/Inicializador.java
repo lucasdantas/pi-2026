@@ -3,6 +3,7 @@ package jobs;
 import java.util.Date;
 
 import models.Departamento;
+import models.Perfil;
 import models.Pessoa;
 import models.Projeto;
 import play.jobs.Job;
@@ -37,6 +38,7 @@ public class Inicializador extends Job {
 		p1.email = "joaosilva@gmail.com";
 		p1.login = "joao";
 		p1.senha = "j1234";
+		p1.perfil = Perfil.ADMIN;
 		p1.save();
 		
 		Pessoa p2 = new Pessoa();
@@ -46,6 +48,7 @@ public class Inicializador extends Job {
 		p2.email = "mj@gmail.com";
 		p2.login = "maria";
 		p2.senha = "m1234";
+		p2.perfil = Perfil.OPERADOR;
 		p2.save();
 		
 		Projeto suap = new Projeto();

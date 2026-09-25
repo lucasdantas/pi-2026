@@ -8,6 +8,8 @@ import models.Status;
 import play.db.jpa.JPABase;
 import play.mvc.Controller;
 import play.mvc.With;
+import security.Administrador;
+import security.Seguranca;
 
 @With(Seguranca.class)
 public class Pessoas extends Controller {
@@ -58,6 +60,7 @@ public class Pessoas extends Controller {
 		listar(null);
 	}
 	
+	@Administrador
 	public static void remover(Long id) {
 		Pessoa qualquerNome = Pessoa.findById(id);
 		qualquerNome.status = Status.INATIVO;

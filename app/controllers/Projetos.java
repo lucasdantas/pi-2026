@@ -7,6 +7,8 @@ import models.Pessoa;
 import models.Projeto;
 import play.mvc.Controller;
 import play.mvc.With;
+import security.Administrador;
+import security.Seguranca;
 
 @With(Seguranca.class)
 public class Projetos extends Controller {
@@ -22,6 +24,7 @@ public class Projetos extends Controller {
 		render(projeto, pessoas);
 	}
 	
+	@Administrador
 	public static void removerMembro(Long idProjeto, Long idPessoa) {
 		Projeto projeto = Projeto.findById(idProjeto);
 		Pessoa pessoa = Pessoa.findById(idPessoa);
