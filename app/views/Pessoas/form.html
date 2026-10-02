@@ -14,11 +14,11 @@
 	<h4>Revise as informações do formulário</h4>
 #{/ifErrors}
 
-<form action="/pessoas/salvar" method="post">
+<form action="/pessoas/salvar" enctype="multipart/form-data" method="post">
 	
 	<input type="hidden" name="pessoa.id" value="${p.id}" />
 
-	<input type="text" name="pessoa.nome" value="${pessoa.nome}" placeholder="Nome"/><br />
+	<input type="text" name="pessoa.nome" value="${p.nome}" placeholder="Nome"/><br />
 	<span class="error">#{error 'pessoa.nome' /}</span><br />
 	
 	<input type="text" name="pessoa.email" value="${p.email}" placeholder="Email"/><br />
@@ -34,6 +34,10 @@
 			</option>
 		#{/list}
 	</select>
+	
+	<br />
+	
+	<input type="file" name="pessoa.foto" />
 	
 	<br />
 	

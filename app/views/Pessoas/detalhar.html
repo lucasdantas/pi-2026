@@ -5,9 +5,12 @@
 <h1>Detalhamento</h1>
 <hr />
 
+
+<img src="@{Pessoas.verFoto(pessoa.id)}" />
+
 <p>Nome: ${pessoa.nome}</p>
 <p>Email: ${pessoa.email}</p>
-<p>Nascimento: ${pessoa.nascimento.format('dd/MM/yyyy')}</p>
+<p>Nascimento: ${pessoa?.nascimento?.format('dd/MM/yyyy')}</p>
 
 <hr />
 

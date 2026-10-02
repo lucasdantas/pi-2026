@@ -54,6 +54,12 @@ public class Pessoas extends Controller {
 				quantidadeColaboradores);
 	}
 	
+	public static void verFoto(Long id) {
+		Pessoa pessoa = Pessoa.findById(id);
+		response.setContentTypeIfNotSet(pessoa.foto.type());
+		renderBinary(pessoa.foto.get());
+	}
+	
 	public static void salvar(@Valid Pessoa pessoa) {
 		if (validation.hasErrors()) {
 			Pessoa p = pessoa;
